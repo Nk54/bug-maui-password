@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiPasswordBindingWindows.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <Grid
+        ColumnDefinitions="*,Auto,Auto,*"
+        ColumnSpacing="16"
+        RowDefinitions="*,Auto,Auto,*"
+        RowSpacing="16">
+
+        <VerticalStackLayout
+            Grid.Row="1"
+            Grid.Column="1"
+            Spacing="16">
+
+            <Label Text="If IsPassword=true and text is binded" />
+            <Label Text="Text remain empty instead of *******" />
+            <Label Text="{Binding Password1, StringFormat='Password 1 : {0}'}" />
+            <Entry IsPassword="{Binding IsPassword1}" Text="{Binding Password1, Mode=TwoWay}" />
+            <Button Command="{Binding DisplayPasswordValueCommand1}" Text="Display/hide password" />
+
+        </VerticalStackLayout>
+
+
+        <VerticalStackLayout
+            Grid.Row="1"
+            Grid.Column="2"
+            Spacing="16">
+            <Label Text="IsPassword2=false, text gets displayed" />
+            <Label Text="{Binding Password2, StringFormat='Password 2 : {0}'}" />
+            <Entry IsPassword="{Binding IsPassword2}" Text="{Binding Password2, Mode=TwoWay}" />
+            <Button Command="{Binding DisplayPasswordValueCommand2}" Text="Display/hide password" />
+
+        </VerticalStackLayout>
+
+
+        <VerticalStackLayout
+            Grid.Row="2"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Spacing="16">
+
+            <Label Text="In both case there is a bug : the entry text doesn't get update when switching mode" />
+            <Label Text="But if user set the inputs (instead of the ctor of the VM), it works when switching mode" />
+
+        </VerticalStackLayout>
+
+    </Grid>
+</ContentPage>
